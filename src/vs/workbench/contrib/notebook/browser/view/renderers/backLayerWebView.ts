@@ -644,7 +644,14 @@ var requirejs = (function() {
 						this.notebookEditor.didEndDragMarkupCell(data.cellId);
 						break;
 					}
-
+				case 'renderedMarkup':
+					{
+						const cell = this.notebookEditor.getCellById(data.cellId);
+						if (cell instanceof MarkupCellViewModel) {
+							cell.renderedHtml = data.html;
+						}
+						break;
+					}
 				case 'telemetryFoundRenderedMarkdownMath':
 					{
 						this.telemetryService.publicLog2<{}, {}>('notebook/markdown/renderedLatex', {});
