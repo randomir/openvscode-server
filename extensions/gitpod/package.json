@@ -33,10 +33,6 @@
         "title": "%openSettings%"
       },
       {
-        "command": "gitpod.open.accessControl",
-        "title": "%openAccessControl%"
-      },
-      {
         "command": "gitpod.open.context",
         "title": "%openContext%"
       },

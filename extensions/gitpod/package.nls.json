@@ -3,7 +3,7 @@
 	"description": "Gitpod Integration Support",
 	"openDashboard": "Gitpod: Open Dashboard",
 	"openAccessControl": "Gitpod: Open Access Control",
-	"openSettings": "Gitpod: Open Settings",
+	"openSettings": "Open Workspaces Settings",
 	"openContext": "Gitpod: Open Context",
 	"openDocumentation": "Gitpod: Documentation",
 	"openCommunity": "Gitpod: Open Community Forum",
