@@ -216,7 +216,8 @@ async function installInitialExtensions(
 	logService: ILogService
 ): Promise<void> {
 	const pendingExtensions = (async () => {
-		const extensions = ['ms-python.python@2021.8.1159798656', 'ms-toolsai.jupyter@2021.8.0'];
+		//const extensions = ['ms-python.python@2021.8.1159798656', 'ms-toolsai.jupyter@2021.8.0'];
+		const extensions = [];
 		try {
 			const workspaceInfoResponse = await util.promisify(infoServiceClient.workspaceInfo.bind(infoServiceClient, new WorkspaceInfoRequest(), supervisorMetadata, {
 				deadline: Date.now() + supervisorDeadlines.long
