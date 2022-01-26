@@ -3,8 +3,9 @@
 	"displayName": "leap-links",
 	"description": "Leap Links",
 	"version": "0.0.1",
+	"publisher": "dwavesystems",
 	"engines": {
-		"vscode": "^1.61.0"
+		"vscode": "^1.58.0"
 	},
 	"categories": [
 		"Other"
@@ -44,7 +45,7 @@
 		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.61.0",
+		"@types/vscode": "^1.58.0",
 		"@types/mocha": "^9.0.0",
 		"eslint": "^7.32.0",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
