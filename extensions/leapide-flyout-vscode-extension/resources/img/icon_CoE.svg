@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="24px" viewBox="0 0 23 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>icon_CoE</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Mocks" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="IDE-Workspace-Slideout" transform="translate(-1062.000000, -227.000000)">
+            <g id="Group" transform="translate(1041.000000, 64.000000)">
+                <g id="Items" transform="translate(11.000000, 91.000000)">
+                    <g id="CoE" transform="translate(11.000000, 70.000000)">
+                        <g id="icon_CoE" transform="translate(0.000000, 3.000000)">
+                            <rect id="Rectangle" stroke="#4378F8" stroke-width="1.5999999" x="0" y="0" width="16.2352931" height="16.2352931" rx="0.799999952"></rect>
+                            <path d="M12.8470581,7.97647011 L21.3176458,16.4470578 L17.5010581,16.4464701 L19.8418112,22.020405 L17.9367553,22.8201524 L15.4890581,16.9904701 L12.8470581,19.5460534 L12.8470581,7.97647011 Z" id="Path-2" fill="#4378F8" fill-rule="nonzero" transform="translate(17.082352, 15.398311) rotate(-20.000000) translate(-17.082352, -15.398311) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

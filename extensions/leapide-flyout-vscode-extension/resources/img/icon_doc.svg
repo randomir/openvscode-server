@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.1 (89650) - https://sketch.com -->
+    <title>icon_doc</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-Mocks" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="IDE-Workspace-Slideout" transform="translate(-1064.000000, -296.000000)" stroke="#4378F8" stroke-width="1.77999997">
+            <g id="Group" transform="translate(1041.000000, 64.000000)">
+                <g id="Items" transform="translate(11.000000, 91.000000)">
+                    <g id="Docs" transform="translate(13.000000, 140.000000)">
+                        <path d="M0.889999986,2 L20.11,2 C20.6015334,2 21,2.39846657 21,2.88999999 L21,22.11 C21,22.6015334 20.6015334,23 20.11,23 L0.889999986,23 C0.398466566,23 6.01954829e-17,22.6015334 0,22.11 L0,2.88999999 C-6.01954829e-17,2.39846657 0.398466566,2 0.889999986,2 Z M5.25,16.4375 L15.75,16.4375 M5.25,12.0625 L15.75,12.0625 M5.25,8.125 L15.75,8.125" id="icon_doc"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
