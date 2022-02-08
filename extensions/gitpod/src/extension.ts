@@ -165,23 +165,18 @@ export async function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.documentation', () =>
 		vscode.env.openExternal(vscode.Uri.parse('https://www.gitpod.io/docs'))
 	));
+	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.leapIdeDocumentation', () =>
+		vscode.env.openExternal(vscode.Uri.parse('https://docs.dwavesys.com/docs/latest/doc_ide_user.html'))
+	));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.community', () =>
 		vscode.env.openExternal(vscode.Uri.parse('https://community.gitpod.io'))
 	));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.follow', () =>
-		vscode.env.openExternal(vscode.Uri.parse('https://twitter.com/gitpod'))
+		vscode.env.openExternal(vscode.Uri.parse('https://twitter.com/dwavesys'))
 	));
-	context.subscriptions.push(vscode.commands.registerCommand('gitpod.reportIssue', () =>
-		vscode.env.openExternal(vscode.Uri.parse('https://github.com/gitpod-io/gitpod/issues/new/choose'))
+	context.subscriptions.push(vscode.commands.registerCommand('gitpod.contactUs', () =>
+		vscode.env.openExternal(vscode.Uri.parse('https://www.dwavesys.com/company/contact'))
 	));
-
-	const communityStatusBarItem = vscode.window.createStatusBarItem('gitpod.community', vscode.StatusBarAlignment.Right, -100);
-	communityStatusBarItem.name = 'Chat with us on Discourse';
-	context.subscriptions.push(communityStatusBarItem);
-	communityStatusBarItem.text = '$(comment-discussion)';
-	communityStatusBarItem.tooltip = 'Chat with us on Discourse';
-	communityStatusBarItem.command = 'gitpod.open.community';
-	communityStatusBarItem.show();
 
 	(async () => {
 		const workspaceOwned = await pendingWorkspaceOwned;
@@ -190,9 +185,6 @@ export async function activate(context: vscode.ExtensionContext) {
 		}
 		context.subscriptions.push(vscode.commands.registerCommand('gitpod.stop.ws', () =>
 			gitpodService.server.stopWorkspace(workspaceId)
-		));
-		context.subscriptions.push(vscode.commands.registerCommand('gitpod.upgradeSubscription', () =>
-			vscode.env.openExternal(vscode.Uri.parse(new GitpodHostUrl(gitpodHost).asUpgradeSubscription().toString()))
 		));
 		context.subscriptions.push(vscode.commands.registerCommand('gitpod.takeSnapshot', async () => {
 			try {
@@ -216,71 +208,6 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		}));
 	})();
-
-	//#region workspace sharing
-	(async () => {
-		const owner = await pendingGetOwner;
-		const workspaceOwned = await pendingWorkspaceOwned;
-		const workspaceSharingStatusBarItem = vscode.window.createStatusBarItem('gitpod.workspaceSharing', vscode.StatusBarAlignment.Left);
-		workspaceSharingStatusBarItem.name = 'Workspace Sharing';
-		context.subscriptions.push(workspaceSharingStatusBarItem);
-		function setWorkspaceShared(workspaceShared: boolean): void {
-			if (workspaceOwned) {
-				vscode.commands.executeCommand('setContext', 'gitpod.workspaceShared', workspaceShared);
-				if (workspaceShared) {
-					workspaceSharingStatusBarItem.text = '$(broadcast) Shared';
-					workspaceSharingStatusBarItem.tooltip = 'Your workspace is currently shared. Anyone with the link can access this workspace.';
-					workspaceSharingStatusBarItem.command = 'gitpod.stopSharingWorkspace';
-				} else {
-					workspaceSharingStatusBarItem.text = '$(live-share) Share';
-					workspaceSharingStatusBarItem.tooltip = 'Your workspace is currently not shared. Only you can access it.';
-					workspaceSharingStatusBarItem.command = 'gitpod.shareWorkspace';
-				}
-			} else {
-				workspaceSharingStatusBarItem.text = '$(broadcast) Shared by ' + owner.name;
-				workspaceSharingStatusBarItem.tooltip = `You are currently accessing the workspace shared by ${owner.name}.`;
-			}
-			workspaceSharingStatusBarItem.show();
-		}
-		const listener = await pendingInstanceListener;
-		setWorkspaceShared(listener.info.workspace.shareable || false);
-		if (!workspaceOwned) {
-			return;
-		}
-		async function controlAdmission(level: GitpodServer.AdmissionLevel): Promise<void> {
-			try {
-				if (level === 'everyone') {
-					const confirm = await vscode.window.showWarningMessage('Sharing your workspace with others also means sharing your access to your repository. Everyone with access to the workspace you share can commit in your name.', { modal: true }, 'Share');
-					if (confirm !== 'Share') {
-						return;
-					}
-				}
-				await vscode.window.withProgress({
-					location: vscode.ProgressLocation.Notification,
-					cancellable: true,
-					title: level === 'everyone' ? 'Sharing workspace...' : 'Stopping workspace sharing...'
-				}, _ => {
-					return gitpodService.server.controlAdmission(workspaceId, level);
-				});
-				setWorkspaceShared(level === 'everyone');
-				if (level === 'everyone') {
-					await vscode.window.showInformationMessage(`Your workspace is currently shared. Anyone with the link can access this workspace.`);
-				} else {
-					await vscode.window.showInformationMessage(`Your workspace is currently not shared. Only you can access it.`);
-				}
-			} catch (err) {
-				console.error('cannot controlAdmission', err);
-				if (level === 'everyone') {
-					await vscode.window.showErrorMessage(`Cannot share workspace: ${err.toString()}`);
-				} else {
-					await vscode.window.showInformationMessage(`Cannot stop workspace sharing: ${err.toString()}`);
-				}
-			}
-		}
-		context.subscriptions.push(vscode.commands.registerCommand('gitpod.shareWorkspace', () => controlAdmission('everyone')));
-		context.subscriptions.push(vscode.commands.registerCommand('gitpod.stopSharingWorkspace', () => controlAdmission('owner')));
-	})();
-	////#endregion
 
 	//#region workspace timeout
 	(async () => {

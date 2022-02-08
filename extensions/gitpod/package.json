@@ -49,6 +49,10 @@
         "title": "%openDocumentation%"
       },
       {
+        "command": "gitpod.open.leapIdeDocumentation",
+        "title": "%openLeapIdeDocumentation%"
+      },
+      {
         "command": "gitpod.open.follow",
         "title": "%openFollow%"
       },
@@ -57,13 +61,8 @@
         "title": "%openCommunity%"
       },
       {
-        "command": "gitpod.reportIssue",
-        "title": "%reportIssue%"
-      },
-      {
-        "command": "gitpod.upgradeSubscription",
-        "title": "%upgradeSubscription%",
-        "enablement": "gitpod.workspaceOwned == true"
+        "command": "gitpod.contactUs",
+        "title": "%contactUs%"
       },
       {
         "command": "gitpod.ExtendTimeout",
@@ -74,16 +73,6 @@
         "command": "gitpod.takeSnapshot",
         "title": "%takeSnapshot%",
         "enablement": "gitpod.workspaceOwned == true"
-      },
-      {
-        "command": "gitpod.shareWorkspace",
-        "title": "%shareWorkspace%",
-        "enablement": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-      },
-      {
-        "command": "gitpod.stopSharingWorkspace",
-        "title": "%stopSharingWorkspace%",
-        "enablement": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
       },
       {
         "command": "gitpod.ports.openBrowser",
@@ -146,23 +135,9 @@
           "group": "gitpod@10"
         },
         {
-          "command": "gitpod.open.documentation",
-          "group": "gitpod@20"
-        },
-        {
           "command": "gitpod.takeSnapshot",
           "group": "gitpod@30",
           "when": "gitpod.workspaceOwned == true"
-        },
-        {
-          "command": "gitpod.shareWorkspace",
-          "group": "gitpod@40",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-        },
-        {
-          "command": "gitpod.stopSharingWorkspace",
-          "group": "gitpod@40",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
         },
         {
           "command": "gitpod.stop.ws",
@@ -174,15 +149,6 @@
         {
           "command": "gitpod.open.settings",
           "group": "navigation@10"
-        },
-        {
-          "command": "gitpod.open.accessControl",
-          "group": "navigation@20"
-        },
-        {
-          "command": "gitpod.upgradeSubscription",
-          "group": "navigation@30",
-          "when": "gitpod.workspaceOwned == true"
         },
         {
           "command": "gitpod.ExtendTimeout",
@@ -200,8 +166,12 @@
           "group": "z_about2@20"
         },
         {
-          "command": "gitpod.reportIssue",
+          "command": "gitpod.contactUs",
           "group": "z_about2@30"
+        },
+        {
+          "command": "gitpod.open.leapIdeDocumentation",
+          "group": "z_about2@40"
         }
       ],
       "statusBar/remoteIndicator": [
@@ -209,6 +179,10 @@
           "command": "gitpod.stop.ws",
           "group": "remote_00_gitpod_navigation@10",
           "when": "gitpod.workspaceOwned == true"
+        },
+        {
+          "command": "gitpod.open.dashboard",
+          "group": "remote_00_gitpod_navigation@50"
         },
         {
           "command": "gitpod.open.settings",
@@ -223,8 +197,8 @@
           "group": "remote_00_gitpod_navigation@40"
         },
         {
-          "command": "gitpod.open.dashboard",
-          "group": "remote_00_gitpod_navigation@50"
+          "command": "gitpod.open.leapIdeDocumentation",
+          "group": "remote_00_gitpod_navigation@65"
         },
         {
           "command": "gitpod.open.documentation",
@@ -235,17 +209,8 @@
           "group": "remote_00_gitpod_navigation@70"
         },
         {
-          "command": "gitpod.open.community",
-          "group": "remote_00_gitpod_navigation@80"
-        },
-        {
-          "command": "gitpod.reportIssue",
+          "command": "gitpod.contactUs",
           "group": "remote_00_gitpod_navigation@90"
-        },
-        {
-          "command": "gitpod.upgradeSubscription",
-          "group": "remote_00_gitpod_navigation@100",
-          "when": "gitpod.workspaceOwned == true"
         },
         {
           "command": "gitpod.ExtendTimeout",
@@ -256,16 +221,6 @@
           "command": "gitpod.takeSnapshot",
           "group": "remote_00_gitpod_navigation@120",
           "when": "gitpod.workspaceOwned == true"
-        },
-        {
-          "command": "gitpod.shareWorkspace",
-          "group": "remote_00_gitpod_navigation@130",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == false"
-        },
-        {
-          "command": "gitpod.stopSharingWorkspace",
-          "group": "remote_00_gitpod_navigation@130",
-          "when": "gitpod.workspaceOwned == true && gitpod.workspaceShared == true"
         }
       ],
       "view/item/context": [
@@ -344,14 +299,14 @@
       "remote": [
         {
           "id": "gitpod.workspace",
-          "name": "Gitpod Workspace"
+          "name": "Leap IDE Workspace"
         }
       ]
     },
     "authentication": [
       {
         "id": "gitpod",
-        "label": "Gitpod"
+        "label": "Leap"
       },
       {
         "id": "github",
