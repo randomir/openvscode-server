@@ -54,7 +54,6 @@ export class StatefulMarkdownCell extends Disposable {
 		this.markdownAccessibilityContainer.style.height = '1px';
 		this.markdownAccessibilityContainer.style.position = 'absolute';
 		this.markdownAccessibilityContainer.style.top = '10000px';
-		this.markdownAccessibilityContainer.ariaHidden = 'false';
 
 		this.templateData.rootContainer.setAttribute('aria-describedby', id);
 
@@ -178,7 +177,6 @@ export class StatefulMarkdownCell extends Disposable {
 	private viewUpdateCollapsed(): void {
 		DOM.show(this.templateData.collapsedPart);
 		DOM.hide(this.editorPart);
-		this.markdownAccessibilityContainer.ariaHidden = 'true';
 
 		this.templateData.container.classList.toggle('collapsed', true);
 		this.viewCell.renderedMarkdownHeight = 0;
@@ -190,7 +188,6 @@ export class StatefulMarkdownCell extends Disposable {
 		let editorHeight: number;
 
 		DOM.show(this.editorPart);
-		this.markdownAccessibilityContainer.ariaHidden = 'true';
 		DOM.hide(this.templateData.collapsedPart);
 
 		this.notebookEditor.hideMarkupPreviews([this.viewCell]);
@@ -281,7 +278,6 @@ export class StatefulMarkdownCell extends Disposable {
 		this.viewCell.detachTextEditor();
 		DOM.hide(this.editorPart);
 		DOM.hide(this.templateData.collapsedPart);
-		this.markdownAccessibilityContainer.ariaHidden = 'false';
 		this.templateData.container.classList.toggle('collapsed', false);
 		this.templateData.container.classList.toggle('markdown-cell-edit-mode', false);
 
